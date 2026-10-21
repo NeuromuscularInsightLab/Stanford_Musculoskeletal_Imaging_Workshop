@@ -1,8 +1,0 @@
-matplotlib
-pandas
-seaborn
-nibabel
-scikit-image
-nilearn
-pyyaml
-numpy
