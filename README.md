@@ -6,7 +6,7 @@ Led by Dr. Eddo Wesselink
 ## 1. Installation
 ## 2. Data
 
-# DOSMA Hands-On Image Analysis
+# OpenMSK Hands-On Image Analysis
 Led by Dr. Anthony Gatti
 ## 1. Installation
 ## 2. Data
