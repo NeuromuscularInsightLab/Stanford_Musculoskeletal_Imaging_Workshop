@@ -38,10 +38,11 @@ Choose one of the three options below and click it to expand the instructions.
 
 | | Option | Best for | Installation |
 |:-:|:--|:--|:--|
-| 1 | **Terminal** (Python command line) | Batch processing, scripting, extracting metrics | ~15 min |
-| 2 | **3D Slicer** (desktop app, point-and-click) | Running and visually inspecting single cases | ~15 min |
-| 3 | **NeuroDesk web app** (browser) | Trying MuscleMap without installing anything | None |
+| 1 | [**Terminal** (Python command line)](#option-1-terminal) | Batch processing, scripting, extracting metrics | ~15 min |
+| 2 | [**3D Slicer** (desktop app, point-and-click)](#option-2-slicer) | Running and visually inspecting single cases | ~15 min |
+| 3 | [**NeuroDesk web app** (browser)](#option-3-neurodesk) | Trying MuscleMap without installing anything | None |
 
+<a name="option-1-terminal"></a>
 <details>
 <summary><b>Option 1 — Terminal (Python command line)</b></summary>
 
@@ -200,6 +201,7 @@ If a problem persists, bring your laptop 30 minutes before the session.
 
 </details>
 
+<a name="option-2-slicer"></a>
 <details>
 <summary><b>Option 2 — 3D Slicer (desktop app, point-and-click)</b></summary>
 
@@ -252,6 +254,7 @@ If a problem persists, bring your laptop 30 minutes before the session.
 
 </details>
 
+<a name="option-3-neurodesk"></a>
 <details>
 <summary><b>Option 3 — NeuroDesk web app (no installation)</b></summary>
 
