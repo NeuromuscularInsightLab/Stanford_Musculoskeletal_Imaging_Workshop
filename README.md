@@ -1,22 +1,43 @@
 # Stanford Musculoskeletal Imaging Workshop
-GitHub repository for the Stanford Musculoskeletal Imaging Workshop, taking place November 9–11, 2026.
+
+<p align="center">
+   <b>November 9–11, 2026</b><br>
+   Hands-on image analysis sessions. Everything you need to install and the example data are in this repository.
+</p>
 
 | Session | Lead | Go to |
-|---|---|---|
-| MuscleMap Toolbox Hands-On Image Analysis | Dr. Eddo Wesselink | [Three ways to run MuscleMap](#musclemap-toolbox-hands-on-image-analysis) · [Example data](#example-data) |
-| OpenMSK Hands-On Image Analysis | Dr. Anthony Gatti | [Installation](#1-installation) · [Data](#2-data) |
+|:--|:--|:--|
+| 🦵 **MuscleMap Toolbox Hands-On Image Analysis** | Dr. Eddo Wesselink | [Three ways to run MuscleMap](#three-ways-to-run-musclemap) · [Example data](#example-data) |
+| 🦴 **OpenMSK Hands-On Image Analysis** | Dr. Anthony Gatti | [Installation](#1-installation) · [Data](#2-data) |
 
----
+> **Please install the software at home, before the workshop.** The downloads are several gigabytes and conference Wi-Fi will not be fast enough on the day.
 
-# MuscleMap Toolbox Hands-On Image Analysis
-Led by Dr. Eddo Wesselink
+<br>
+
+## MuscleMap Toolbox Hands-On Image Analysis
+
+*Led by Dr. Eddo Wesselink*
+
+<p align="center">
+   <img width="100%" src="assets/v1.4_figure.gif" alt="Rotating whole-body MRI and CT muscle segmentations, with axial callouts at the neck, thorax, abdomen, hip, thigh and leg">
+</p>
+
+<p align="center">
+   <b>🦵 All MuscleMap labels can be found on the <a href="https://musclemap.github.io/MuscleMap/muscle-anatomy/">MuscleMap website</a></b>
+</p>
+
+<p align="center">
+   <b>🧊 Explore MuscleMap segmentations in 3D in our <a href="https://musclemap-3d.eddo-wesselink.workers.dev/">MuscleMap 3D viewer</a></b>
+</p>
 
 [MuscleMap](https://github.com/MuscleMap/MuscleMap) is a free, open-source toolbox for whole-body muscle segmentation and analysis of MRI and CT images.
+
+### Three ways to run MuscleMap
 
 There are **three ways** to run MuscleMap. Pick the one that suits you and click it to expand the instructions. You only need one.
 
 | | Option | Best for | Installation |
-|---|---|---|---|
+|:-:|:--|:--|:--|
 | 1 | **Terminal** (Python command line) | Batch processing, scripting, extracting metrics | ~15 min, before the workshop |
 | 2 | **3D Slicer** (desktop app, point-and-click) | Running and visually inspecting single cases | ~15 min, before the workshop |
 | 3 | **NeuroDesk web app** (browser) | Trying MuscleMap without installing anything | None |
@@ -266,12 +287,12 @@ Processing runs without a GPU, so expect a few minutes per image.
 
 </details>
 
-## Example data
+### Example data
 
 The [`data/MuscleMap/`](data/MuscleMap/) folder contains the example image used in the hands-on session: an axial T2-weighted lumbar spine MRI of one patient at the L4–L5 disc level.
 
 | File | Level | Slices |
-|---|---|---|
+|:--|:--|:-:|
 | `data/MuscleMap/sub-01_T2w_L4-L5.nii.gz` | L4–L5 | 4 |
 
 The file is a small stack of axial slices through the L4–L5 intervertebral disc, as acquired in routine clinical practice. Nothing needs to be downloaded separately: the image comes with this repository.
@@ -280,9 +301,15 @@ The images are taken from the open *Lumbar Spine MRI Dataset* (Sudirman et al., 
 
 *Hands-on notebooks will be added here before the workshop.*
 
+<br>
+
 ---
 
-# OpenMSK Hands-On Image Analysis
-Led by Dr. Anthony Gatti
-## 1. Installation
-## 2. Data
+## OpenMSK Hands-On Image Analysis
+
+*Led by Dr. Anthony Gatti*
+
+### 1. Installation
+
+### 2. Data
+
