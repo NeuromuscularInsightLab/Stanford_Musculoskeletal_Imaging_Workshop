@@ -275,14 +275,17 @@ The image comes from the open *Lumbar Spine MRI Dataset* (Sudirman et al., Mende
 
 [`notebooks/MuscleMap_segmentation.ipynb`](notebooks/MuscleMap_segmentation.ipynb) runs MuscleMap on the example image from inside a Jupyter notebook: load and view the image, run `mm_segment`, read the log, and view the segmentation as an overlay and in 3D. It requires *Option 1 — Terminal*.
 
-Start JupyterLab from the MuscleMap environment, inside this repository's folder. A browser tab opens with the file browser; open `notebooks/MuscleMap_segmentation.ipynb` and run the cells with Shift + Enter.
+Install JupyterLab in the MuscleMap environment and register the environment as a notebook kernel (one-time), then start JupyterLab inside this repository's folder:
 
 ```
 conda activate MuscleMap
-pip install jupyterlab
+python -m pip install jupyterlab ipykernel
+python -m ipykernel install --user --name musclemap --display-name "Python (MuscleMap)"
 cd <path to this repository>
 jupyter lab
 ```
+
+A browser tab opens with the file browser. Open `notebooks/MuscleMap_segmentation.ipynb`, check that the kernel in the top-right corner is **Python (MuscleMap)**, and run the cells with Shift + Enter.
 
 <br>
 
