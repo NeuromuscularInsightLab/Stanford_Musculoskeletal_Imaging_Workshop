@@ -19,7 +19,7 @@
 *Led by Dr. Eddo Wesselink*
 
 <p align="center">
-   <img width="100%" src="assets/v1.4_figure.gif" alt="Rotating whole-body MRI and CT muscle segmentations, with axial callouts at the neck, thorax, abdomen, hip, thigh and leg">
+   <img width="60%" src="assets/v1.4_figure.gif" alt="Rotating whole-body MRI and CT muscle segmentations, with axial callouts at the neck, thorax, abdomen, hip, thigh and leg">
 </p>
 
 <p align="center">
@@ -179,19 +179,7 @@ All commands below can be copied and pasted into a terminal:
 
    The segmentation `sub-01_T2w_L4-L5_dseg.nii.gz` is written next to the input image. The model is now cached on your computer.
 
-#### Troubleshooting
-
-| Problem | Fix |
-|---|---|
-| `conda: command not found` (Windows) | Use Anaconda Prompt instead of Command Prompt or PowerShell. |
-| `conda: command not found` (Mac/Linux) | Close and reopen the terminal. If it persists, run `~/miniconda3/bin/conda init` and reopen the terminal. |
-| `CondaError: Run 'conda init' before 'conda activate'` | Run `conda init`, reopen the terminal and repeat Step 2. |
-| `mm_segment: command not found` | The environment is not active. Run `conda activate MuscleMap`. |
-| `pip install -e .` fails with "no such file setup.py" | The terminal is not inside the MuscleMap folder. Run `cd MuscleMap` (or `cd MuscleMap-main`) first. |
-| `GPU available: False` after Step 5 | The NVIDIA driver is too old. Update it from https://www.nvidia.com/drivers, restart and verify again. |
-| Segmentation is slow or runs out of memory | Run `mm_segment -i image.nii.gz -s 75 -c auto` (lower overlap, automatic chunk size). |
-
-If a problem persists, bring your laptop 30 minutes before the session.
+Having trouble with the installation? Email eowess@stanford.edu.
 
 #### Useful links
 
@@ -283,7 +271,18 @@ The image is a stack of axial slices through the L4–L5 intervertebral disc, as
 
 The image comes from the open *Lumbar Spine MRI Dataset* (Sudirman et al., Mendeley Data, CC BY 4.0) and was converted from DICOM to NIfTI. See [`data/MuscleMap/README.md`](data/MuscleMap/README.md) for the full attribution.
 
-*Hands-on notebooks will be added here before the workshop.*
+### Hands-on notebook
+
+[`notebooks/MuscleMap_segmentation.ipynb`](notebooks/MuscleMap_segmentation.ipynb) runs MuscleMap on the example image from inside a Jupyter notebook: load and view the image, run `mm_segment`, read the log, and view the segmentation as an overlay and in 3D. It requires *Option 1 — Terminal*.
+
+Start JupyterLab from the MuscleMap environment, inside this repository's folder. A browser tab opens with the file browser; open `notebooks/MuscleMap_segmentation.ipynb` and run the cells with Shift + Enter.
+
+```
+conda activate MuscleMap
+pip install jupyterlab
+cd <path to this repository>
+jupyter lab
+```
 
 <br>
 
