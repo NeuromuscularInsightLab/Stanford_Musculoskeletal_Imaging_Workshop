@@ -53,130 +53,130 @@ All commands below can be copied and pasted into a terminal:
 * **macOS:** Terminal
 * **Linux:** your terminal of choice
 
-   1. **Install Miniconda**
+1. **Install Miniconda**
 
-      Skip this step if Anaconda or Miniconda is already installed.
+   Skip this step if Anaconda or Miniconda is already installed.
 
-      Download the installer for your system, run it and accept the default settings:
+   Download the installer for your system, run it and accept the default settings:
 
-      | Operating system | Download |
-      |---|---|
-      | **Windows** | [Miniconda3-latest-Windows-x86_64.exe](https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe) |
-      | **Mac with Apple Silicon** (M1, M2, M3, M4) | [Miniconda3-latest-MacOSX-arm64.pkg](https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.pkg) |
-      | **Mac with Intel chip** | [Miniconda3-latest-MacOSX-x86_64.pkg](https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.pkg) |
-      | **Linux** | [Miniconda3-latest-Linux-x86_64.sh](https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh) |
+   | Operating system | Download |
+   |---|---|
+   | **Windows** | [Miniconda3-latest-Windows-x86_64.exe](https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe) |
+   | **Mac with Apple Silicon** (M1, M2, M3, M4) | [Miniconda3-latest-MacOSX-arm64.pkg](https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.pkg) |
+   | **Mac with Intel chip** | [Miniconda3-latest-MacOSX-x86_64.pkg](https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.pkg) |
+   | **Linux** | [Miniconda3-latest-Linux-x86_64.sh](https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh) |
 
-      On Linux, run the installer from a terminal and answer `yes` to the prompts:
+   On Linux, run the installer from a terminal and answer `yes` to the prompts:
 
-      ```
-      bash ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
-      ```
+   ```
+   bash ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
+   ```
 
-   2. **Create and activate the MuscleMap environment**
+2. **Create and activate the MuscleMap environment**
 
-      ```
-      conda create --name MuscleMap python=3.11.8 -y
-      conda activate MuscleMap
-      ```
+   ```
+   conda create --name MuscleMap python=3.11.8 -y
+   conda activate MuscleMap
+   ```
 
-      The prompt now starts with `(MuscleMap)`. Run `conda activate MuscleMap` in every new terminal before using MuscleMap.
+   The prompt now starts with `(MuscleMap)`. Run `conda activate MuscleMap` in every new terminal before using MuscleMap.
 
-   3. **Download MuscleMap**
+3. **Download MuscleMap**
 
-      With git:
+   With git:
 
-      ```
-      git clone --depth 1 https://github.com/MuscleMap/MuscleMap
-      cd MuscleMap
-      ```
+   ```
+   git clone --depth 1 https://github.com/MuscleMap/MuscleMap
+   cd MuscleMap
+   ```
 
-      Without git: open https://github.com/MuscleMap/MuscleMap, click the green **<> Code ▼** button, choose **Download ZIP** and unzip it. This creates a folder named `MuscleMap-main`. Go into that folder in your terminal:
+   Without git: open https://github.com/MuscleMap/MuscleMap, click the green **<> Code ▼** button, choose **Download ZIP** and unzip it. This creates a folder named `MuscleMap-main`. Go into that folder in your terminal:
 
-      ```
-      cd Downloads/MuscleMap-main
-      ```
+   ```
+   cd Downloads/MuscleMap-main
+   ```
 
-   4. **Install MuscleMap**
+4. **Install MuscleMap**
 
-      From inside the MuscleMap folder, with the environment active:
+   From inside the MuscleMap folder, with the environment active:
 
-      ```
-      pip install -e .
-      ```
+   ```
+   pip install -e .
+   ```
 
-      This installs MuscleMap and its dependencies, including a CPU build of PyTorch. It takes a few minutes.
+   This installs MuscleMap and its dependencies, including a CPU build of PyTorch. It takes a few minutes.
 
-   5. **Enable your GPU (optional)**
+5. **Enable your GPU (optional)**
 
-      MuscleMap runs on the CPU by default. An NVIDIA GPU makes segmentation considerably faster. **Without a GPU, continue with Step 6.**
+   MuscleMap runs on the CPU by default. An NVIDIA GPU makes segmentation considerably faster. **Without a GPU, continue with Step 6.**
 
-      | Your computer | What to do |
-      |---|---|
-      | **Mac** (Intel or Apple Silicon) | Nothing. MuscleMap uses NVIDIA GPUs only; on a Mac it runs on the CPU. Continue with Step 6. |
-      | **Windows / Linux with an NVIDIA GPU** | Follow **5a**. |
-      | **Linux with an AMD GPU** (ROCm) | Follow **5b**. |
+   | Your computer | What to do |
+   |---|---|
+   | **Mac** (Intel or Apple Silicon) | Nothing. MuscleMap uses NVIDIA GPUs only; on a Mac it runs on the CPU. Continue with Step 6. |
+   | **Windows / Linux with an NVIDIA GPU** | Follow **5a**. |
+   | **Linux with an AMD GPU** (ROCm) | Follow **5b**. |
 
-      - **5a — NVIDIA GPU (Windows or Linux)**
+   - **5a — NVIDIA GPU (Windows or Linux)**
 
-        1. Run:
+     1. Run:
 
-           ```
-           nvidia-smi
-           ```
+        ```
+        nvidia-smi
+        ```
 
-        2. Read the `CUDA Version` in the top-right corner of the output.
+     2. Read the `CUDA Version` in the top-right corner of the output.
 
-        3. Run the command for your CUDA version:
+     3. Run the command for your CUDA version:
 
-           **CUDA 12.1 or higher**
-
-           ```
-           pip uninstall -y torch
-           pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cu121
-           ```
-
-           **CUDA 11.8, 11.9 or 12.0**
-
-           ```
-           pip uninstall -y torch
-           pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cu118
-           ```
-
-           **CUDA lower than 11.8:** update your NVIDIA driver from https://www.nvidia.com/drivers, restart, and use the command for CUDA 12.1 or higher.
-
-        4. Verify:
-
-           ```
-           python -c "import torch; print('PyTorch', torch.__version__); print('GPU available:', torch.cuda.is_available())"
-           ```
-
-           Expected output: `GPU available: True`.
-
-      - **5b — AMD GPU with ROCm (Linux only)**
+        **CUDA 12.1 or higher**
 
         ```
         pip uninstall -y torch
-        pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/rocm6.1
-        python -c "import torch; print('GPU available:', torch.cuda.is_available())"
+        pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cu121
         ```
 
-   6. **Verify the installation**
+        **CUDA 11.8, 11.9 or 12.0**
 
-      ```
-      mm_segment -h
-      ```
+        ```
+        pip uninstall -y torch
+        pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cu118
+        ```
 
-      A help message listing the options of `mm_segment` confirms that the installation works.
+        **CUDA lower than 11.8:** update your NVIDIA driver from https://www.nvidia.com/drivers, restart, and use the command for CUDA 12.1 or higher.
 
-   7. **Download the model weights**
+     4. Verify:
 
-      The segmentation model is downloaded from Zenodo the first time `mm_segment` runs. Do this once at home on the example image: download this repository (green **<> Code ▼** button → **Download ZIP**, or `git clone`), go into its `data/MuscleMap` folder in your terminal and run:
+        ```
+        python -c "import torch; print('PyTorch', torch.__version__); print('GPU available:', torch.cuda.is_available())"
+        ```
 
-      ```
-      mm_segment -i sub-01_T2w_L4-L5.nii.gz
-      ```
+        Expected output: `GPU available: True`.
 
-      The segmentation `sub-01_T2w_L4-L5_dseg.nii.gz` is written next to the input image. The model is now cached on your computer.
+   - **5b — AMD GPU with ROCm (Linux only)**
+
+     ```
+     pip uninstall -y torch
+     pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/rocm6.1
+     python -c "import torch; print('GPU available:', torch.cuda.is_available())"
+     ```
+
+6. **Verify the installation**
+
+   ```
+   mm_segment -h
+   ```
+
+   A help message listing the options of `mm_segment` confirms that the installation works.
+
+7. **Download the model weights**
+
+   The segmentation model is downloaded from Zenodo the first time `mm_segment` runs. Do this once at home on the example image: download this repository (green **<> Code ▼** button → **Download ZIP**, or `git clone`), go into its `data/MuscleMap` folder in your terminal and run:
+
+   ```
+   mm_segment -i sub-01_T2w_L4-L5.nii.gz
+   ```
+
+   The segmentation `sub-01_T2w_L4-L5_dseg.nii.gz` is written next to the input image. The model is now cached on your computer.
 
 #### Troubleshooting
 
@@ -209,37 +209,37 @@ If a problem persists, bring your laptop 30 minutes before the session.
 
 **Video tutorial:** https://www.youtube.com/watch?v=aAXxopcMeKI&t=14s. The video installs the *Preview Release* of Slicer; MuscleMap is now included in the **Stable Release**, which is what the steps below use.
 
-   1. **Install 3D Slicer**
+1. **Install 3D Slicer**
 
-      1. Go to https://download.slicer.org/
-      2. Under **Stable Release**, download the version for your operating system (5.12 or newer).
-      3. Run the installer and accept the default settings. On macOS, drag Slicer into the Applications folder.
-      4. Start 3D Slicer.
+   1. Go to https://download.slicer.org/
+   2. Under **Stable Release**, download the version for your operating system (5.12 or newer).
+   3. Run the installer and accept the default settings. On macOS, drag Slicer into the Applications folder.
+   4. Start 3D Slicer.
 
-   2. **Install the MuscleMap extension**
+2. **Install the MuscleMap extension**
 
-      1. Open **View → Extensions Manager**.
-      2. Search for **MuscleMap** and click **Install**. The required **PyTorch** extension is installed with it.
-      3. Restart Slicer when asked.
+   1. Open **View → Extensions Manager**.
+   2. Search for **MuscleMap** and click **Install**. The required **PyTorch** extension is installed with it.
+   3. Restart Slicer when asked.
 
-   3. **Install PyTorch inside Slicer**
+3. **Install PyTorch inside Slicer**
 
-      1. Open **View → Modules → Utilities → PyTorch Utils**.
-      2. Click **Install PyTorch**. With the default settings the module detects a compatible NVIDIA GPU and installs the matching build, or a CPU build otherwise.
-      3. Wait for the message that PyTorch was installed successfully. This takes several minutes.
+   1. Open **View → Modules → Utilities → PyTorch Utils**.
+   2. Click **Install PyTorch**. With the default settings the module detects a compatible NVIDIA GPU and installs the matching build, or a CPU build otherwise.
+   3. Wait for the message that PyTorch was installed successfully. This takes several minutes.
 
-   4. **Install the MuscleMap dependencies**
+4. **Install the MuscleMap dependencies**
 
-      1. Open **View → Modules → MuscleMap → MuscleMap Whole-body Segmentation**.
-      2. Click **Install MuscleMap dependencies**. This is a one-time step of several minutes.
-      3. Wait for the message *MuscleMap dependencies are installed and ready*.
+   1. Open **View → Modules → MuscleMap → MuscleMap Whole-body Segmentation**.
+   2. Click **Install MuscleMap dependencies**. This is a one-time step of several minutes.
+   3. Wait for the message *MuscleMap dependencies are installed and ready*.
 
-   5. **Run the example image and download the model weights**
+5. **Run the example image and download the model weights**
 
-      1. Download this repository (green **<> Code ▼** button → **Download ZIP**).
-      2. In the MuscleMap module, click **Load volume from file…** and open `data/MuscleMap/sub-01_T2w_L4-L5.nii.gz`.
-      3. With the image selected under **Input volume**, click **Run MuscleMap segmentation**. The first run downloads the segmentation model from Zenodo.
-      4. The segmentation appears over the image. **Show 3D** renders it in 3D.
+   1. Download this repository (green **<> Code ▼** button → **Download ZIP**).
+   2. In the MuscleMap module, click **Load volume from file…** and open `data/MuscleMap/sub-01_T2w_L4-L5.nii.gz`.
+   3. With the image selected under **Input volume**, click **Run MuscleMap segmentation**. The first run downloads the segmentation model from Zenodo.
+   4. The segmentation appears over the image. **Show 3D** renders it in 3D.
 
 #### Troubleshooting
 
@@ -259,10 +259,10 @@ If a problem persists, bring your laptop 30 minutes before the session.
 
 MuscleMap runs in the browser inside the [NeuroDesk](https://www.neurodesk.org/) environment. Nothing is installed on your computer.
 
-   1. Go to https://webapps.neurodesk.org/musclemap/
-   2. Drag and drop an image into the page. NIfTI files (`.nii`, `.nii.gz`) and DICOM folders are accepted. For the workshop, use `data/MuscleMap/sub-01_T2w_L4-L5.nii.gz` from this repository.
-   3. Select the image and click **Run segmentation**.
-   4. The labelled result appears in the viewer and can be exported for further analysis.
+1. Go to https://webapps.neurodesk.org/musclemap/
+2. Drag and drop an image into the page. NIfTI files (`.nii`, `.nii.gz`) and DICOM folders are accepted. For the workshop, use `data/MuscleMap/sub-01_T2w_L4-L5.nii.gz` from this repository.
+3. Select the image and click **Run segmentation**.
+4. The labelled result appears in the viewer and can be exported for further analysis.
 
 Processing runs on the CPU and takes a few minutes per image.
 
