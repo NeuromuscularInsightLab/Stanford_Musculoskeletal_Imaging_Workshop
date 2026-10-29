@@ -273,13 +273,13 @@ The image comes from the open *Lumbar Spine MRI Dataset* (Sudirman et al., Mende
 
 ### Hands-on notebook
 
-[`notebooks/MuscleMap_segmentation.ipynb`](notebooks/MuscleMap_segmentation.ipynb) runs MuscleMap on the example image from inside a Jupyter notebook: load and view the image, run `mm_segment`, read the log, and view the segmentation as an overlay and in 3D. It requires *Option 1 — Terminal*.
+[`notebooks/MuscleMap_segmentation.ipynb`](notebooks/MuscleMap_segmentation.ipynb) runs MuscleMap on the example image from inside a Jupyter notebook: load and view the image, run `mm_segment`, read the log, and view the segmentation as an overlay, and compute volume and cross-sectional area of the paraspinal muscles. It requires *Option 1 — Terminal*.
 
 Install JupyterLab in the MuscleMap environment and register the environment as a notebook kernel (one-time), then start JupyterLab inside this repository's folder:
 
 ```
 conda activate MuscleMap
-python -m pip install jupyterlab ipykernel
+python -m pip install jupyterlab ipykernel plotly
 python -m ipykernel install --user --name musclemap --display-name "Python (MuscleMap)"
 cd <path to this repository>
 jupyter lab
