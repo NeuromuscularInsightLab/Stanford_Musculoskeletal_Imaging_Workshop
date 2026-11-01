@@ -1,0 +1,24 @@
+{
+  "input_image": "C:\\Users\\EddoWesselink\\Stanford_Musculoskeletal_Imaging_Workshop\\data\\MuscleMap\\source-data\\sub-02_thigh-Dixon_fatfraction.nii.gz",
+  "output_image": "sub-02_thigh-Dixon_fatfraction_dseg.nii.gz",
+  "datetime": "2026-11-01T08:59:25+00:00",
+  "region": "wholebody",
+  "model": "contrast_agnostic_wholebody_model.pth",
+  "model_version": 1.4,
+  "overlap_percent": 90,
+  "chunk_size": "auto",
+  "device": "cpu",
+  "inferer": {
+    "spatial_dim": 2,
+    "roi_size": [
+      256,
+      256
+    ],
+    "sw_batch_size": 1,
+    "overlap": 0.9,
+    "mode": "gaussian",
+    "sigma_scale": 0.125,
+    "padding_mode": "constant",
+    "cval": 0.0
+  }
+}

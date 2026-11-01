@@ -171,13 +171,13 @@ All commands below can be copied and pasted into a terminal:
 
 7. **Download the model weights**
 
-   The segmentation model is downloaded from Zenodo the first time `mm_segment` runs. Do this once at home on the example image: download this repository (green **<> Code ▼** button → **Download ZIP**, or `git clone`), go into its `data/MuscleMap` folder in your terminal and run:
+   The segmentation model is downloaded from Zenodo the first time `mm_segment` runs. Do this once at home on the example image: download this repository (green **<> Code ▼** button → **Download ZIP**, or `git clone`), go into its `data/MuscleMap/source-data` folder in your terminal and run:
 
    ```
    mm_segment -i sub-01_T2w_L4-L5.nii.gz
    ```
 
-   The segmentation `sub-01_T2w_L4-L5_dseg.nii.gz` is written next to the input image. The model is now cached on your computer.
+   The segmentation `sub-01_T2w_L4-L5_dseg.nii.gz` is written to the current folder. The model is now cached on your computer.
 
 Having trouble with the installation? Email eowess@stanford.edu.
 
@@ -227,7 +227,7 @@ Having trouble with the installation? Email eowess@stanford.edu.
 5. **Run the example image and download the model weights**
 
    1. Download this repository (green **<> Code ▼** button → **Download ZIP**).
-   2. In the MuscleMap module, click **Load volume from file…** and open `data/MuscleMap/sub-01_T2w_L4-L5.nii.gz`.
+   2. In the MuscleMap module, click **Load volume from file…** and open `data/MuscleMap/source-data/sub-01_T2w_L4-L5.nii.gz`.
    3. With the image selected under **Input volume**, click **Run MuscleMap segmentation**. The first run downloads the segmentation model from Zenodo.
    4. The segmentation appears over the image. **Show 3D** renders it in 3D.
 
@@ -251,7 +251,7 @@ Having trouble with the installation? Email eowess@stanford.edu.
 MuscleMap runs in the browser inside the [NeuroDesk](https://www.neurodesk.org/) environment. Nothing is installed on your computer.
 
 1. Go to https://webapps.neurodesk.org/musclemap/
-2. Drag and drop an image into the page. NIfTI files (`.nii`, `.nii.gz`) and DICOM folders are accepted. For the workshop, use `data/MuscleMap/sub-01_T2w_L4-L5.nii.gz` from this repository.
+2. Drag and drop an image into the page. NIfTI files (`.nii`, `.nii.gz`) and DICOM folders are accepted. For the workshop, use `data/MuscleMap/source-data/sub-01_T2w_L4-L5.nii.gz` from this repository.
 3. Select the image and click **Run segmentation**.
 4. The labelled result appears in the viewer and can be exported for further analysis.
 
@@ -261,25 +261,24 @@ Processing runs on the CPU and takes a few minutes per image.
 
 ### Example data
 
-The [`data/MuscleMap/`](data/MuscleMap/) folder contains the example image for the hands-on session: an axial T2-weighted lumbar spine MRI of one patient at the L4–L5 disc level.
+The [`data/MuscleMap/`](data/MuscleMap/) folder contains the example image for the hands-on session: an axial T2-weighted lumbar spine MRI of one patient at the L4–L5 disc level, a stack of four slices as acquired in routine clinical practice.
 
-| File | Level | Slices |
-|:--|:--|:-:|
-| `data/MuscleMap/sub-01_T2w_L4-L5.nii.gz` | L4–L5 | 4 |
+| Folder | Contents |
+|:--|:--|
+| `data/MuscleMap/source-data/` | The input image, `sub-01_T2w_L4-L5.nii.gz` |
+| `data/MuscleMap/outputs/` | Everything MuscleMap produces, written by the notebook |
 
-The image is a stack of axial slices through the L4–L5 intervertebral disc, as acquired in routine clinical practice. It is included in this repository; no separate download is needed.
-
-The image comes from the open *Lumbar Spine MRI Dataset* (Sudirman et al., Mendeley Data, CC BY 4.0) and was converted from DICOM to NIfTI. See [`data/MuscleMap/README.md`](data/MuscleMap/README.md) for the full attribution.
+The image is included in this repository; no separate download is needed. It comes from the open *Lumbar Spine MRI Dataset* (Sudirman et al., Mendeley Data, CC BY 4.0) and was converted from DICOM to NIfTI. Example 2 of the notebook additionally downloads a thigh Dixon scan from the *MyoSegmenTUM* database (Schlaeger et al., PLOS ONE 2018). See [`data/MuscleMap/README.md`](data/MuscleMap/README.md) for the full attributions.
 
 ### Hands-on notebook
 
-[`notebooks/MuscleMap_segmentation.ipynb`](notebooks/MuscleMap_segmentation.ipynb) runs MuscleMap on the example image from inside a Jupyter notebook: load and view the image, run `mm_segment`, read the log, and view the segmentation as an overlay, and compute volume and cross-sectional area of the paraspinal muscles. It requires *Option 1 — Terminal*.
+[`notebooks/MuscleMap_segmentation.ipynb`](notebooks/MuscleMap_segmentation.ipynb) runs MuscleMap on the example image from inside a Jupyter notebook: load and view the image, run `mm_segment`, read the log, and view the segmentation as an overlay, compute volume, cross-sectional area and fat infiltration of the paraspinal muscles, and, as a second example, segment a thigh Dixon scan on its fat-fraction image and read the true fat fraction per muscle. The thigh scan is downloaded by the notebook from the open MyoSegmenTUM database. It requires *Option 1 — Terminal*.
 
 Install JupyterLab in the MuscleMap environment and register the environment as a notebook kernel (one-time), then start JupyterLab inside this repository's folder:
 
 ```
 conda activate MuscleMap
-python -m pip install jupyterlab ipykernel plotly
+python -m pip install jupyterlab ipykernel plotly pydicom
 python -m ipykernel install --user --name musclemap --display-name "Python (MuscleMap)"
 cd <path to this repository>
 jupyter lab
