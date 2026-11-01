@@ -205,3 +205,9 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# JupyterLab working files
+.virtual_documents/
+
+# Thigh Dixon images are downloaded by the notebook from OSF, not redistributed
+data/MuscleMap/source-data/sub-02_thigh-Dixon_*.nii.gz
