@@ -293,7 +293,3 @@ A browser tab opens with the file browser. Open `notebooks/MuscleMap_segmentatio
 ## OpenMSK Hands-On Image Analysis
 
 *Led by Dr. Anthony Gatti*
-
-### 1. Installation
-
-### 2. Data
