@@ -309,7 +309,7 @@ A browser tab opens with the file browser. Open `notebooks/MuscleMap_segmentatio
 | 2 | [**Jupyter on your own computer**](#openmsk-local) | Keeping a working copy after the workshop | ~10 min |
 | 3 | [**openmsk.com**](https://openmsk.com) | Your own scans, no code | None |
 
-**The session needs no GPU.** The notebook runs in Colab or on any laptop. Only the full OpenMSK pipeline (segmentation through B-score) needs an NVIDIA GPU, if you want to run it on your own machine so no data leaves it. Its installation is in the [OpenMSK repository](https://github.com/gattia/OpenMSK).
+**A GPU is recommended but not required.** It speeds up the shape model in Part 5: in Colab, choose **Runtime → Change runtime type → T4 GPU** (free). Without one, the notebook still runs, on the CPU or on a Mac's Apple GPU. Only the full OpenMSK pipeline (segmentation through B-score) needs an NVIDIA GPU, if you want to run it on your own machine so no data leaves it. Its installation is in the [OpenMSK repository](https://github.com/gattia/OpenMSK).
 
 <a name="before-the-session"></a>
 ### Before the session (2 minutes)
