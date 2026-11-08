@@ -1,0 +1,10 @@
+{
+  "processed_at": "2026-08-12T22:49:11.274689",
+  "input_filename": "openmsk-example-knee.nrrd",
+  "segmentation_model": "dosma_ananya",
+  "perform_nsm": true,
+  "nsm_type": "both",
+  "cartilage_smoothing": 0.4,
+  "batch_size": 128,
+  "pipeline_version": "openmsk.com"
+}

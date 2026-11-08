@@ -1,0 +1,21 @@
+column,units_or_levels,description
+knee_id,,Random label for this teaching sheet. Not an OAI ID.
+side,LEFT / RIGHT,"Knee side. Left knees are mirrored before NSM fitting, so all latents are right-knee frame."
+sex,Male / Female,OAI P02SEX
+age,years,"OAI V00AGE, baseline"
+bmi,kg/m2,OAI P01BMI
+kl,0-4,Baseline Kellgren-Lawrence grade (OAI V00XRKL). Sampled equally by grade: NOT population prevalence.
+prev_knee_surgery,0/1,Ever had surgery or arthroscopy on this knee (OAI P01KSURG)
+bscore_bone,SD units,"B-score from the bone-only NSM (551) with model NSM_Orig_BScore_Bone_Only_April_18_2025. Same model as NSM_bone_only_recon_params.json. Non-OA mean 0, SD 1 by construction."
+bscore_bone_cart,SD units,B-score from the bone+cartilage NSM (647) with model NSM_Orig_BScore_Bone_Cartilage_April_17_2025. Same model as NSM_recon_params.json.
+thick_med_wb_fem_mm,mm,"Medial weight-bearing femoral cartilage, baseline. Fixed anatomical region, denuded points count as 0. NOT the same regional definition as OpenMSK *_results.csv: do not pool the two."
+thick_lat_wb_fem_mm,mm,"As above, lateral weight-bearing femur"
+thick_med_tib_mm,mm,"As above, medial tibia"
+thick_lat_tib_mm,mm,"As above, lateral tibia"
+nrs_pain_current,0-10,7-day knee pain NRS at baseline
+womac_pain_current,0-20,WOMAC pain at baseline
+womac_func_current,0-68,WOMAC function at baseline
+nrs_pain_future,0-10,Median 7-day NRS across later contacts to 96 months
+tkr_8y,0/1,Adjudicated knee replacement within 8 years of enrolment
+tkr_days,days,Days from enrolment to replacement; blank if none
+followup_days,days,"tkr_days if replaced, otherwise time to last OAI contact (visit months x 30.44)"
