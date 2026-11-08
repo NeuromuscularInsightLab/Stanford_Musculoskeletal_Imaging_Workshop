@@ -8,7 +8,7 @@
 | Session | Lead | Go to |
 |:--|:--|:--|
 | 🦵 **MuscleMap Toolbox Hands-On Image Analysis** | Dr. Eddo Wesselink | [Three ways to run MuscleMap](#three-ways-to-run-musclemap) · [Example data](#example-data) |
-| 🦴 **OpenMSK Hands-On Image Analysis** | Dr. Anthony Gatti | [Installation](#1-installation) · [Data](#2-data) |
+| 🦴 **OpenMSK Hands-On Image Analysis** | Dr. Anthony Gatti | [Three ways to run OpenMSK](#three-ways-to-run-openmsk) · [Before the session](#before-the-session) · [Example data](#openmsk-example-data) |
 
 > Please complete the installation at home before the workshop. The downloads are several gigabytes.
 
@@ -293,3 +293,80 @@ A browser tab opens with the file browser. Open `notebooks/MuscleMap_segmentatio
 ## OpenMSK Hands-On Image Analysis
 
 *Led by Dr. Anthony Gatti*
+
+<p align="center">
+   <img width="38%" src="assets/openmsk/banner_thickness.png" alt="Cartilage thickness on the femur of the example knee">
+   <img width="38%" src="assets/openmsk/banner_kl4.png" alt="The average KL 4 femur, coloured by its distance from the average KL 0 femur">
+</p>
+
+[OpenMSK](https://github.com/gattia/OpenMSK) is a free, open-source pipeline for knee MRI. From one scan it returns segmentations of bone, cartilage and menisci, surface meshes, regional cartilage thickness, T2 maps, a neural shape model fit and a B-score for bone shape. You can run it on [openmsk.com](https://openmsk.com) without installing anything.
+
+### Three ways to run OpenMSK
+
+| | Option | Best for | Installation |
+|:-:|:--|:--|:--|
+| 1 | [**Google Colab notebook**](https://colab.research.google.com/github/NeuromuscularInsightLab/Stanford_Musculoskeletal_Imaging_Workshop/blob/main/notebooks/OpenMSK_hands_on.ipynb) | The session. Everything in the browser, with a free GPU | None |
+| 2 | [**Jupyter on your own computer**](#openmsk-local) | Keeping a working copy after the workshop | ~10 min |
+| 3 | [**openmsk.com**](https://openmsk.com) | Your own scans, no code | None |
+
+To run the full pipeline on your own machine, so no data leaves it, follow the installation in the [OpenMSK repository](https://github.com/gattia/OpenMSK). It needs an NVIDIA GPU, and it isn't needed for the session.
+
+<a name="before-the-session"></a>
+### Before the session (2 minutes)
+
+1. **Open the notebook in Colab:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromuscularInsightLab/Stanford_Musculoskeletal_Imaging_Workshop/blob/main/notebooks/OpenMSK_hands_on.ipynb). You need a Google account.
+2. **Check it runs:** choose **Runtime → Change runtime type → T4 GPU**, then run the Setup cell and Part 2.
+
+The shape model in Part 5 downloads by itself from [Hugging Face](https://huggingface.co/aagatti/ShapeMedKnee). No account is needed, and it's free for non-commercial use.
+
+**Please don't upload scans to openmsk.com during the session.** One GPU serves the site, and each scan takes about 9 minutes, so a room of uploads would queue for hours. The notebook uses the example knee, which is already in this repository. You can download it from the site too: *New here? Try the example first* → **MRI + all results**.
+
+<a name="openmsk-local"></a>
+<details>
+<summary><b>Option 2: Jupyter on your own computer</b></summary>
+
+<br>
+
+You need [Miniconda](#option-1-terminal) (Step 1 of the MuscleMap install) and [git](https://git-scm.com/downloads). No git? Download this repository as a ZIP from the green **<> Code** button, unzip it, and `cd` into it instead of the first two lines. Use a separate environment from MuscleMap's:
+
+```
+git clone https://github.com/NeuromuscularInsightLab/Stanford_Musculoskeletal_Imaging_Workshop.git
+cd Stanford_Musculoskeletal_Imaging_Workshop
+conda create --name openmsk-workshop python=3.11 -y
+conda activate openmsk-workshop
+pip install -r notebooks/OpenMSK_requirements.txt
+python -m ipykernel install --user --name openmsk-workshop --display-name "Python (OpenMSK)"
+jupyter lab
+```
+
+Open `notebooks/OpenMSK_hands_on.ipynb` and check that the kernel in the top-right corner is **Python (OpenMSK)**. Already have this repository from the MuscleMap session? Skip the first two lines and `cd` into it.
+
+Stuck? [`notebooks/OpenMSK_LLM_prompts.md`](notebooks/OpenMSK_LLM_prompts.md#set-up-this-notebook-on-your-own-computer) has prompts that walk an AI assistant through the setup with you.
+
+</details>
+
+<a name="openmsk-example-data"></a>
+### Example data
+
+| Folder | Contents |
+|:--|:--|
+| [`data/OpenMSK/example/`](data/OpenMSK/example/) | One knee MRI and every output OpenMSK produced for it, the same as **MRI + all results** on openmsk.com |
+| [`data/OpenMSK/oai_teaching_cohort/`](data/OpenMSK/oai_teaching_cohort/) | 500 OAI knees, 100 per KL grade: B-score, cartilage thickness, pain, knee replacement, and each knee's shape-model latent |
+| [`data/OpenMSK/decoded/`](data/OpenMSK/decoded/) | Shape-model knees decoded ahead of time, used only if the model can't be downloaded |
+
+See [`data/OpenMSK/README.md`](data/OpenMSK/README.md) for details and attribution.
+
+### Hands-on notebook
+
+[`notebooks/OpenMSK_hands_on.ipynb`](notebooks/OpenMSK_hands_on.ipynb) goes from the website to your own analysis:
+
+1. **The website:** what to upload and which options to pick
+2. **One knee:** every output for the example knee, including labels, meshes, thickness, the shape model fit and the B-score
+3. **A cohort:** 500 OAI knees, and five minutes to explore them yourself
+4. **B-score analyses:** the two B-scores, thickness by KL grade, pain and knee replacement
+5. **The shape model:** turn latent vectors back into knees, see group differences and build your own axis
+6. **Your turn:** pick a question, run it, and tell the room. Then many scans into one sheet, and where to go next
+
+[`notebooks/OpenMSK_LLM_prompts.md`](notebooks/OpenMSK_LLM_prompts.md) has each step as a prompt for an LLM.
+
+*Research use only. Not for clinical diagnosis.* If OpenMSK contributes to your work, please cite Goyal A et al., *Osteoarthritis and Cartilage Open*, 2026;8(4):100886.

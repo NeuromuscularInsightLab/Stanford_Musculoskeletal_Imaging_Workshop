@@ -1,0 +1,8 @@
+{
+  "steps": {
+    "segmentation": "complete",
+    "mesh_and_thickness": "complete",
+    "t2_mapping": "skipped",
+    "nsm_preparation": "complete"
+  }
+}

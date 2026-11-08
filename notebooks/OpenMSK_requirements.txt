@@ -1,0 +1,17 @@
+# OpenMSK hands-on notebook, for running on your own computer (Colab needs none of this)
+numpy
+pandas
+matplotlib
+scikit-learn
+scikit-image
+pyvista
+trame-pyvista
+plotly
+pynrrd
+nibabel
+torch
+huggingface_hub
+mskt
+git+https://github.com/gattia/NSM
+jupyterlab
+ipykernel
