@@ -309,7 +309,7 @@ A browser tab opens with the file browser. Open `notebooks/MuscleMap_segmentatio
 | 2 | [**Jupyter on your own computer**](#openmsk-local) | Keeping a working copy after the workshop | ~10 min |
 | 3 | [**openmsk.com**](https://openmsk.com) | Your own scans, no code | None |
 
-To run the full pipeline on your own machine, so no data leaves it, follow the installation in the [OpenMSK repository](https://github.com/gattia/OpenMSK). It needs an NVIDIA GPU, and it isn't needed for the session.
+**The session needs no GPU.** The notebook runs in Colab or on any laptop. Only the full OpenMSK pipeline (segmentation through B-score) needs an NVIDIA GPU, if you want to run it on your own machine so no data leaves it. Its installation is in the [OpenMSK repository](https://github.com/gattia/OpenMSK).
 
 <a name="before-the-session"></a>
 ### Before the session (2 minutes)
@@ -317,7 +317,7 @@ To run the full pipeline on your own machine, so no data leaves it, follow the i
 1. **Open the notebook in Colab:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromuscularInsightLab/Stanford_Musculoskeletal_Imaging_Workshop/blob/main/notebooks/OpenMSK_hands_on.ipynb). You need a Google account.
 2. **Check it runs:** choose **Runtime → Change runtime type → T4 GPU**, then run the Setup cell and Part 2.
 
-The shape model in Part 5 downloads by itself from [Hugging Face](https://huggingface.co/aagatti/ShapeMedKnee). No account is needed, and it's free for non-commercial use.
+The shape model in Part 5 downloads by itself from [Hugging Face](https://huggingface.co/aagatti/ShapeMedKnee).
 
 **Please don't upload scans to openmsk.com during the session.** One GPU serves the site, and each scan takes about 9 minutes, so a room of uploads would queue for hours. The notebook uses the example knee, which is already in this repository. You can download it from the site too: *New here? Try the example first* → **MRI + all results**.
 
