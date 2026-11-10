@@ -171,13 +171,13 @@ All commands below can be copied and pasted into a terminal:
 
 7. **Download the model weights**
 
-   The segmentation model is downloaded from Zenodo the first time `mm_segment` runs. Do this once at home on the example image: download this repository (green **<> Code ▼** button → **Download ZIP**, or `git clone`), go into its `data/MuscleMap/source-data` folder in your terminal and run:
+   The segmentation model is downloaded from Zenodo the first time `mm_segment` runs. Do this once at home on the example image: download this repository (green **<> Code ▼** button → **Download ZIP**, or `git clone`), go into the repository folder in your terminal and run:
 
    ```
-   mm_segment -i sub-01_T2w_L4-L5.nii.gz
+   mm_segment -i data/MuscleMap/source-data/sub-01_T2w_L4-L5.nii.gz -o data/MuscleMap/outputs/lumbar
    ```
 
-   The segmentation `sub-01_T2w_L4-L5_dseg.nii.gz` is written to the current folder. The model is now cached on your computer.
+   The segmentation `sub-01_T2w_L4-L5_dseg.nii.gz` is written to `data/MuscleMap/outputs/lumbar/`. The model is now cached on your computer.
 
 Having trouble with the installation? Email eowess@stanford.edu.
 
@@ -266,7 +266,8 @@ The [`data/MuscleMap/`](data/MuscleMap/) folder contains the example image for t
 | Folder | Contents |
 |:--|:--|
 | `data/MuscleMap/source-data/` | The input image, `sub-01_T2w_L4-L5.nii.gz` |
-| `data/MuscleMap/outputs/` | Everything MuscleMap produces, written by the notebook |
+| `data/MuscleMap/outputs/lumbar/` | Everything MuscleMap produces for Example 1 (lumbar spine), written by the notebook |
+| `data/MuscleMap/outputs/thigh/` | Everything MuscleMap produces for Example 2 (thigh Dixon), written by the notebook |
 
 The image is included in this repository; no separate download is needed. It comes from the open *Lumbar Spine MRI Dataset* (Sudirman et al., Mendeley Data, CC BY 4.0) and was converted from DICOM to NIfTI. Example 2 of the notebook additionally downloads a thigh Dixon scan from the *MyoSegmenTUM* database (Schlaeger et al., PLOS ONE 2018). See [`data/MuscleMap/README.md`](data/MuscleMap/README.md) for the full attributions.
 

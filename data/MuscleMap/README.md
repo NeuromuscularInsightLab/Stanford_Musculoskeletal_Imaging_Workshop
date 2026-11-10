@@ -7,7 +7,8 @@ Axial T2-weighted lumbar spine MRI of one patient at the L4–L5 intervertebral 
 | Folder | Contents |
 |:--|:--|
 | `source-data/` | The lumbar spine input image (stored here) and, after running Example 2 of the notebook, the downloaded thigh Dixon images plus the derived fat-fraction image. Do not modify. |
-| `outputs/` | Everything MuscleMap produces: segmentations (`*_dseg.nii.gz`), JSON sidecars, fat maps and CSV results. Created by the notebook. |
+| `outputs/lumbar/` | Everything MuscleMap produces for Example 1 (lumbar spine): segmentation (`*_dseg.nii.gz`), JSON sidecar, fat maps and CSV results. Written by the notebook. |
+| `outputs/thigh/` | Everything MuscleMap produces for Example 2 (thigh Dixon): segmentation, JSON sidecar and the Dixon CSV results. Written by the notebook. |
 
 | File | Level | Slices | Voxel size (mm) |
 |:--|:--|:-:|:--|
