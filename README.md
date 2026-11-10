@@ -360,11 +360,11 @@ See [`data/OpenMSK/README.md`](data/OpenMSK/README.md) for details and attributi
 
 [`notebooks/OpenMSK_hands_on.ipynb`](notebooks/OpenMSK_hands_on.ipynb) goes from the website to your own analysis:
 
-1. **The website:** what to upload and which options to pick
-2. **One knee:** every output for the example knee, including labels, meshes, thickness, the shape model fit and the B-score
-3. **A cohort:** 500 OAI knees, and five minutes to explore them yourself
-4. **B-score analyses:** the two B-scores, thickness by KL grade, pain and knee replacement
-5. **The shape model:** turn latent vectors back into knees, see group differences and build your own axis
+1. **Run OpenMSK:** how a scan goes in at openmsk.com, what to upload and which options to pick
+2. **Open the results:** every output for the example knee, including labels, meshes, thickness, the shape model fit and the B-score
+3. **Many knees:** 500 OAI knees, and five minutes to explore them yourself
+4. **B-score analyses:** does bone shape track OA, pain and knee replacement?
+5. **See the shape:** turn latent vectors back into knees, see group differences and build your own axis
 6. **Your turn:** pick a question, run it, and tell the room. Then many scans into one sheet, and where to go next
 
 [`notebooks/OpenMSK_LLM_prompts.md`](notebooks/OpenMSK_LLM_prompts.md) has each step as a prompt for an LLM.
