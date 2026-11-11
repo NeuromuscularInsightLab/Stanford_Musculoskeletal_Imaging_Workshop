@@ -114,6 +114,13 @@ You will download two things along the way, and both folders stay on your comput
 
    This installs MuscleMap and its dependencies, including a CPU build of PyTorch. It takes a few minutes.
 
+   Then install JupyterLab in the same environment and register the environment as a notebook kernel, for the hands-on notebook:
+
+   ```
+   python -m pip install jupyterlab ipykernel plotly
+   python -m ipykernel install --user --name musclemap --display-name "Python (MuscleMap)"
+   ```
+
 5. **Enable your GPU (optional)**
 
    MuscleMap runs on the CPU by default. An NVIDIA GPU makes segmentation considerably faster. **Without a GPU, continue with Step 6.**
@@ -301,28 +308,26 @@ Processing runs on the CPU and takes a few minutes per image.
 
 ### Example data
 
-The [`data/MuscleMap/`](data/MuscleMap/) folder contains the two example images for the hands-on session: an axial T2-weighted lumbar spine MRI of one patient at the L4–L5 disc level, a stack of four slices as acquired in routine clinical practice, and a Dixon fat image of both thighs.
+The [`data/MuscleMap/`](data/MuscleMap/) folder contains the two example images for the hands-on session: an axial T2-weighted lumbar spine MRI of one patient at the L4–L5 disc level, a stack of four slices as acquired in routine clinical practice, and a Dixon fat-fraction image of both thighs acquired during the hands-on imaging session of this workshop.
 
 | Folder | Contents |
 |:--|:--|
 | `data/MuscleMap/source-data/lumbar/` | Example 1 input: the lumbar spine image, `sub-01_T2w_L4-L5.nii.gz` |
-| `data/MuscleMap/source-data/thigh/` | Example 2 input: the thigh Dixon fat image, `sub-workshop_thigh-example.nii.gz` |
+| `data/MuscleMap/source-data/thigh/` | Example 2 input: the thigh Dixon fat-fraction image, `sub-workshop_thigh-example.nii.gz` |
 | `data/MuscleMap/outputs/lumbar/` | Everything MuscleMap produces for Example 1 (lumbar spine), written by the notebook |
 | `data/MuscleMap/outputs/thigh/` | Everything MuscleMap produces for Example 2 (thigh Dixon): the segmentation and the metrics are included, ready to use |
 
-Both images are included in this repository; no separate download is needed. The lumbar image comes from the open *Lumbar Spine MRI Dataset* (Sudirman et al., Mendeley Data, CC BY 4.0) and was converted from DICOM to NIfTI. Example 2 of the notebook uses a Dixon fat image of both thighs, hip to knee, at 0.8 mm isotropic resolution. See [`data/MuscleMap/README.md`](data/MuscleMap/README.md) for the full attributions.
+Both images are included in this repository; no separate download is needed. The lumbar image comes from the open *Lumbar Spine MRI Dataset* (Sudirman et al., Mendeley Data, CC BY 4.0) and was converted from DICOM to NIfTI. Example 2 of the notebook uses the Dixon fat-fraction image of both thighs from the workshop's hands-on imaging session: 26 axial slices of 8 mm, every tenth slice of the 0.8 mm isotropic acquisition. See [`data/MuscleMap/README.md`](data/MuscleMap/README.md) for the full attributions.
 
 ### Hands-on notebook
 
-[`notebooks/MuscleMap_segmentation.ipynb`](notebooks/MuscleMap_segmentation.ipynb) runs MuscleMap on the example image from inside a Jupyter notebook: load and view the image, run `mm_segment`, read the log, and view the segmentation as an overlay, compute volume, cross-sectional area and fat infiltration of the paraspinal muscles, and, as a second example, segment both thighs on a Dixon fat image and read volume and fat infiltration per muscle. It requires *Option 1 — Terminal*.
+[`notebooks/MuscleMap_segmentation.ipynb`](notebooks/MuscleMap_segmentation.ipynb) runs MuscleMap on the example image from inside a Jupyter notebook: load and view the image, run `mm_segment`, read the log, and view the segmentation as an overlay, compute volume, cross-sectional area and fat infiltration of the paraspinal muscles, and, as a second example, segment both thighs on a Dixon fat-fraction image and read volume and fat fraction per muscle. It requires *Option 1 — Terminal*.
 
-Install JupyterLab in the MuscleMap environment and register the environment as a notebook kernel (one-time), then start JupyterLab inside this repository's folder:
+JupyterLab was installed in Step 4 of *Option 1 — Terminal*. Start it from inside the workshop folder:
 
 ```
 conda activate MuscleMap
-python -m pip install jupyterlab ipykernel plotly
-python -m ipykernel install --user --name musclemap --display-name "Python (MuscleMap)"
-cd <path to this repository>
+cd <path to the workshop folder>
 jupyter lab
 ```
 
