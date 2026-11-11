@@ -1,7 +1,0 @@
-Label,Anatomy,Slices with segmentation,Muscle (%),Fat (%),Total volume (ml),Fat volume (ml),Muscle volume (ml),Undefined (%),Undefined volume (ml)
-5101,thoracolumbar multifidus left,4,82.09,5.56,22.88,1.27,18.81,12.35,2.8
-5102,thoracolumbar multifidus right,4,79.23,8.08,21.26,1.72,16.87,12.69,2.68
-5111,erector spinae left,4,58.28,17.38,22.06,3.83,12.91,24.34,5.31
-5112,erector spinae right,4,61.06,15.79,21.42,3.38,13.14,23.15,4.9
-5121,psoas major left,4,60.01,1.25,28.19,0.35,17.62,38.74,10.22
-5122,psoas major right,4,58.91,0.95,26.14,0.25,15.95,40.14,9.94
