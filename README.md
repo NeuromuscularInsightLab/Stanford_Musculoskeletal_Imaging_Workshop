@@ -11,6 +11,8 @@
 | 🦴 **OpenMSK Hands-On Image Analysis** | Dr. Anthony Gatti | [Three ways to run OpenMSK](#three-ways-to-run-openmsk) · [Before the session](#before-the-session) · [Example data](#openmsk-example-data) |
 
 > Please complete the installation at home before the workshop. The downloads are several gigabytes.
+>
+> Start by downloading this repository (green **<> Code ▼** button → **Download ZIP**, or `git clone`): it contains the example data and the notebooks for both sessions.
 
 <br>
 
@@ -31,6 +33,20 @@
 </p>
 
 [MuscleMap](https://github.com/MuscleMap/MuscleMap) is a free, open-source toolbox for whole-body muscle segmentation and analysis of MRI and CT images.
+
+### Step 0 · Download this repository
+
+The example images and the hands-on notebook for this session are in this repository. Get it onto your computer first:
+
+* **With git**, in a terminal:
+
+  ```
+  git clone --depth 1 https://github.com/NeuromuscularInsightLab/Stanford_Musculoskeletal_Imaging_Workshop
+  ```
+
+* **Without git**: click the green **<> Code ▼** button at the top of this page, choose **Download ZIP** and unzip it. The folder is then called `Stanford_Musculoskeletal_Imaging_Workshop-main`.
+
+> You will end up with **two folders** on your computer: this **workshop repository** (data and notebook) and, with Option 1 below, **MuscleMap** itself (the software, downloaded in Step 3). Both stay where they are; MuscleMap is installed from its own folder and everything in the workshop runs from the workshop folder.
 
 ### Three ways to run MuscleMap
 
@@ -54,12 +70,12 @@ All commands below can be copied and pasted into a terminal:
 * **macOS:** Terminal
 * **Linux:** your terminal of choice
 
-You will download two things along the way, and both folders stay on your computer:
+Two folders are involved, and both stay on your computer:
 
-| | What it is | Step |
+| | What it is | Where it comes from |
 |:--|:--|:--|
-| **MuscleMap** | The software that does the segmentation | Step 3 |
-| **This workshop repository** | The example images and the hands-on notebook | Step 7 |
+| **This workshop repository** | The example images and the hands-on notebook | Step 0 above |
+| **MuscleMap** | The software that does the segmentation | Step 3 below |
 
 1. **Install Miniconda**
 
@@ -183,19 +199,15 @@ You will download two things along the way, and both folders stay on your comput
 
    A help message listing the options of `mm_segment` confirms that the installation works.
 
-7. **Download this workshop repository**
+7. **Go to the workshop folder**
 
-   It contains the example images and the hands-on notebook. Put it next to the MuscleMap folder. With git:
+   Leave the MuscleMap folder and go into the workshop repository you downloaded in Step 0:
 
    ```
-   cd ..
-   git clone --depth 1 https://github.com/NeuromuscularInsightLab/Stanford_Musculoskeletal_Imaging_Workshop
-   cd Stanford_Musculoskeletal_Imaging_Workshop
+   cd <path to the workshop folder>
    ```
 
-   Without git: open https://github.com/NeuromuscularInsightLab/Stanford_Musculoskeletal_Imaging_Workshop, click the green **<> Code ▼** button, choose **Download ZIP** and unzip it next to the MuscleMap folder. This creates a folder named `Stanford_Musculoskeletal_Imaging_Workshop-main`; go into that folder in your terminal.
-
-   All commands from here on are run from inside the workshop folder.
+   The folder is called `Stanford_Musculoskeletal_Imaging_Workshop` (git) or `Stanford_Musculoskeletal_Imaging_Workshop-main` (ZIP). All commands from here on are run from inside this folder.
 
 8. **Download the model weights**
 
@@ -317,7 +329,7 @@ The [`data/MuscleMap/`](data/MuscleMap/) folder contains the two example images 
 | `data/MuscleMap/outputs/lumbar/` | Everything MuscleMap produces for Example 1 (lumbar spine), written by the notebook |
 | `data/MuscleMap/outputs/thigh/` | Everything MuscleMap produces for Example 2 (thigh Dixon): the segmentation and the metrics are included, ready to use |
 
-Both images are included in this repository; no separate download is needed. The lumbar image comes from the open *Lumbar Spine MRI Dataset* (Sudirman et al., Mendeley Data, CC BY 4.0) and was converted from DICOM to NIfTI. Example 2 of the notebook uses the Dixon fat-fraction image of both thighs from the workshop's hands-on imaging session: 26 axial slices of 8 mm, every tenth slice of the 0.8 mm isotropic acquisition. See [`data/MuscleMap/README.md`](data/MuscleMap/README.md) for the full attributions.
+Both images are included in this repository; no separate download is needed. The lumbar image comes from the open *Lumbar Spine MRI Dataset* (Sudirman et al., Mendeley Data, CC BY 4.0) and was converted from DICOM to NIfTI. Example 2 of the notebook uses the Dixon fat-fraction image of both thighs from the workshop's hands-on imaging session. See [`data/MuscleMap/README.md`](data/MuscleMap/README.md) for the full attributions.
 
 ### Hands-on notebook
 

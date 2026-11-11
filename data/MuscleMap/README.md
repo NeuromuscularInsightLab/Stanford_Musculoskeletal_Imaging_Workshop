@@ -36,7 +36,7 @@ The dataset authors ask that the following papers be cited when their data is us
 
 ## Example 2 · Thigh Dixon MRI
 
-A Dixon **proton-density fat-fraction** image of both thighs, acquired during the hands-on imaging session of the Stanford Musculoskeletal Imaging Workshop (November 2026). Voxel values are 0–1000 for a fat fraction of 0–100 %: muscle is dark, fat is bright. The acquisition is 0.8 mm isotropic; every tenth slice was kept and the stack was trimmed to the central 60 % of the thigh, giving 26 slices with an 8 mm spacing, so that the whole-body model segments it in a reasonable time on a CPU. No other processing was applied.
+A Dixon **proton-density fat-fraction** image of both thighs, acquired during the hands-on imaging session of the Stanford Musculoskeletal Imaging Workshop (November 2026). Voxel values are 0–1000 for a fat fraction of 0–100 %: muscle is dark, fat is bright.
 
 The segmentation (`outputs/thigh/sub-workshop_thigh-example_dseg.nii.gz`) and the metrics (`outputs/thigh/sub-workshop_thigh-example_average_results.csv`, from `mm_extract_metrics -m average`) are produced with MuscleMap exactly as shown in the notebook and are included so that the workshop does not wait for them.
 
