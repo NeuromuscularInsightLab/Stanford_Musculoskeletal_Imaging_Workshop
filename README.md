@@ -54,6 +54,13 @@ All commands below can be copied and pasted into a terminal:
 * **macOS:** Terminal
 * **Linux:** your terminal of choice
 
+You will download two things along the way, and both folders stay on your computer:
+
+| | What it is | Step |
+|:--|:--|:--|
+| **MuscleMap** | The software that does the segmentation | Step 3 |
+| **This workshop repository** | The example images and the hands-on notebook | Step 7 |
+
 1. **Install Miniconda**
 
    Skip this step if Anaconda or Miniconda is already installed.
@@ -169,15 +176,48 @@ All commands below can be copied and pasted into a terminal:
 
    A help message listing the options of `mm_segment` confirms that the installation works.
 
-7. **Download the model weights**
+7. **Download this workshop repository**
 
-   The segmentation model is downloaded from Zenodo the first time `mm_segment` runs. Do this once at home on the example image: download this repository (green **<> Code ▼** button → **Download ZIP**, or `git clone`), go into the repository folder in your terminal and run:
+   It contains the example images and the hands-on notebook. Put it next to the MuscleMap folder. With git:
 
    ```
-   mm_segment -i data/MuscleMap/source-data/sub-01_T2w_L4-L5.nii.gz -o data/MuscleMap/outputs/lumbar
+   cd ..
+   git clone --depth 1 https://github.com/NeuromuscularInsightLab/Stanford_Musculoskeletal_Imaging_Workshop
+   cd Stanford_Musculoskeletal_Imaging_Workshop
+   ```
+
+   Without git: open https://github.com/NeuromuscularInsightLab/Stanford_Musculoskeletal_Imaging_Workshop, click the green **<> Code ▼** button, choose **Download ZIP** and unzip it next to the MuscleMap folder. This creates a folder named `Stanford_Musculoskeletal_Imaging_Workshop-main`; go into that folder in your terminal.
+
+   All commands from here on are run from inside the workshop folder.
+
+8. **Download the model weights**
+
+   The segmentation model is downloaded from Zenodo the first time `mm_segment` runs. Do this once at home on the example image:
+
+   ```
+   mm_segment -i data/MuscleMap/source-data/lumbar/sub-01_T2w_L4-L5.nii.gz -o data/MuscleMap/outputs/lumbar
    ```
 
    The segmentation `sub-01_T2w_L4-L5_dseg.nii.gz` is written to `data/MuscleMap/outputs/lumbar/`. The model is now cached on your computer.
+
+9. **Extract metrics: muscle and fat per structure**
+
+   `mm_extract_metrics` takes the image (`-i`) and the segmentation (`-s`) from Step 8 and separates each labelled structure into muscle and fat. With `-m gmm` a Gaussian mixture model with two components (`-c 2`: muscle and fat) is fitted to the intensities, the same method the notebook uses. From the repository folder run:
+
+   ```
+   mm_extract_metrics -m gmm -r wholebody -i data/MuscleMap/source-data/lumbar/sub-01_T2w_L4-L5.nii.gz -s data/MuscleMap/outputs/lumbar/sub-01_T2w_L4-L5_dseg.nii.gz -c 2 -o data/MuscleMap/outputs/lumbar
+   ```
+
+   This writes to `data/MuscleMap/outputs/lumbar/`:
+
+   | File | Contents |
+   |:--|:--|
+   | `sub-01_T2w_L4-L5_gmm_2component_results.csv` | Per structure: muscle %, fat %, total volume (ml) and fat volume (ml) |
+   | `sub-01_T2w_L4-L5_gmm_2component_fat_seg.nii.gz` | Voxels classified as fat |
+   | `sub-01_T2w_L4-L5_gmm_2component_muscle_seg.nii.gz` | Voxels classified as muscle |
+   | `sub-01_T2w_L4-L5_gmm_fat_2component_softseg.nii.gz` | Posterior probability of fat per voxel (0–1) |
+
+   Open the CSV in Excel or any text editor. For Dixon scans use `-m dixon` with the fat (`-f`) and water (`-w`) images instead of `-i`; run `mm_extract_metrics -h` for all options.
 
 Having trouble with the installation? Email eowess@stanford.edu.
 
@@ -227,7 +267,7 @@ Having trouble with the installation? Email eowess@stanford.edu.
 5. **Run the example image and download the model weights**
 
    1. Download this repository (green **<> Code ▼** button → **Download ZIP**).
-   2. In the MuscleMap module, click **Load volume from file…** and open `data/MuscleMap/source-data/sub-01_T2w_L4-L5.nii.gz`.
+   2. In the MuscleMap module, click **Load volume from file…** and open `data/MuscleMap/source-data/lumbar/sub-01_T2w_L4-L5.nii.gz`.
    3. With the image selected under **Input volume**, click **Run MuscleMap segmentation**. The first run downloads the segmentation model from Zenodo.
    4. The segmentation appears over the image. **Show 3D** renders it in 3D.
 
@@ -251,7 +291,7 @@ Having trouble with the installation? Email eowess@stanford.edu.
 MuscleMap runs in the browser inside the [NeuroDesk](https://www.neurodesk.org/) environment. Nothing is installed on your computer.
 
 1. Go to https://webapps.neurodesk.org/musclemap/
-2. Drag and drop an image into the page. NIfTI files (`.nii`, `.nii.gz`) and DICOM folders are accepted. For the workshop, use `data/MuscleMap/source-data/sub-01_T2w_L4-L5.nii.gz` from this repository.
+2. Drag and drop an image into the page. NIfTI files (`.nii`, `.nii.gz`) and DICOM folders are accepted. For the workshop, use `data/MuscleMap/source-data/lumbar/sub-01_T2w_L4-L5.nii.gz` from this repository.
 3. Select the image and click **Run segmentation**.
 4. The labelled result appears in the viewer and can be exported for further analysis.
 
@@ -261,25 +301,26 @@ Processing runs on the CPU and takes a few minutes per image.
 
 ### Example data
 
-The [`data/MuscleMap/`](data/MuscleMap/) folder contains the example image for the hands-on session: an axial T2-weighted lumbar spine MRI of one patient at the L4–L5 disc level, a stack of four slices as acquired in routine clinical practice.
+The [`data/MuscleMap/`](data/MuscleMap/) folder contains the two example images for the hands-on session: an axial T2-weighted lumbar spine MRI of one patient at the L4–L5 disc level, a stack of four slices as acquired in routine clinical practice, and a Dixon fat image of both thighs.
 
 | Folder | Contents |
 |:--|:--|
-| `data/MuscleMap/source-data/` | The input image, `sub-01_T2w_L4-L5.nii.gz` |
+| `data/MuscleMap/source-data/lumbar/` | Example 1 input: the lumbar spine image, `sub-01_T2w_L4-L5.nii.gz` |
+| `data/MuscleMap/source-data/thigh/` | Example 2 input: the thigh Dixon fat image, `sub-workshop_thigh-example.nii.gz` |
 | `data/MuscleMap/outputs/lumbar/` | Everything MuscleMap produces for Example 1 (lumbar spine), written by the notebook |
-| `data/MuscleMap/outputs/thigh/` | Everything MuscleMap produces for Example 2 (thigh Dixon), written by the notebook |
+| `data/MuscleMap/outputs/thigh/` | Everything MuscleMap produces for Example 2 (thigh Dixon): the segmentation and the metrics are included, ready to use |
 
-The image is included in this repository; no separate download is needed. It comes from the open *Lumbar Spine MRI Dataset* (Sudirman et al., Mendeley Data, CC BY 4.0) and was converted from DICOM to NIfTI. Example 2 of the notebook additionally downloads a thigh Dixon scan from the *MyoSegmenTUM* database (Schlaeger et al., PLOS ONE 2018). See [`data/MuscleMap/README.md`](data/MuscleMap/README.md) for the full attributions.
+Both images are included in this repository; no separate download is needed. The lumbar image comes from the open *Lumbar Spine MRI Dataset* (Sudirman et al., Mendeley Data, CC BY 4.0) and was converted from DICOM to NIfTI. Example 2 of the notebook uses a Dixon fat image of both thighs, hip to knee, at 0.8 mm isotropic resolution. See [`data/MuscleMap/README.md`](data/MuscleMap/README.md) for the full attributions.
 
 ### Hands-on notebook
 
-[`notebooks/MuscleMap_segmentation.ipynb`](notebooks/MuscleMap_segmentation.ipynb) runs MuscleMap on the example image from inside a Jupyter notebook: load and view the image, run `mm_segment`, read the log, and view the segmentation as an overlay, compute volume, cross-sectional area and fat infiltration of the paraspinal muscles, and, as a second example, segment a thigh Dixon scan on its fat-fraction image and read the true fat fraction per muscle. The thigh scan is downloaded by the notebook from the open MyoSegmenTUM database. It requires *Option 1 — Terminal*.
+[`notebooks/MuscleMap_segmentation.ipynb`](notebooks/MuscleMap_segmentation.ipynb) runs MuscleMap on the example image from inside a Jupyter notebook: load and view the image, run `mm_segment`, read the log, and view the segmentation as an overlay, compute volume, cross-sectional area and fat infiltration of the paraspinal muscles, and, as a second example, segment both thighs on a Dixon fat image and read volume and fat infiltration per muscle. It requires *Option 1 — Terminal*.
 
 Install JupyterLab in the MuscleMap environment and register the environment as a notebook kernel (one-time), then start JupyterLab inside this repository's folder:
 
 ```
 conda activate MuscleMap
-python -m pip install jupyterlab ipykernel plotly pydicom
+python -m pip install jupyterlab ipykernel plotly
 python -m ipykernel install --user --name musclemap --display-name "Python (MuscleMap)"
 cd <path to this repository>
 jupyter lab
